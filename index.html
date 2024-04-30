@@ -4,9 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mirano</title>
+    <!-- connect favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
     <script type="module" src="/index.js"></script>
   </head>
   <body>
-    <h1>Hello methed!</h1>
+
+    <header class="header">
+      <div class="container header__container">
+        <form class="header__form" action="#">
+          <input class="header__input" type="search" name="search" placeholder="Букет из роз">
+
+          <button class="header__search-btn">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.3333 4.16663C13.3333 4.78496 13.9442 5.70829 14.5625 6.48329C15.3575 7.48329 16.3075 8.35579 17.3967 9.02163C18.2133 9.52079 19.2033 9.99996 20 9.99996M20 9.99996C19.2033 9.99996 18.2125 10.4791 17.3967 10.9783C16.3075 11.645 15.3575 12.5175 14.5625 13.5158C13.9442 14.2916 13.3333 15.2166 13.3333 15.8333M20 9.99996H4.76837e-07" stroke="white"/>
+            </svg>
+          </button>
+        </form>
+
+        <img class="header__logo" src="img/logo.svg" alt="Логотип Mirano flower buetique" >
+
+        <button class="header__cart-button">0             </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero__head-group">
+            <h1 class="hero__title">Авторские букеты</h1>
+            <p class="hero__subtitle">и подарки</p>
+          </div>
+
+          <figure class="hero__group-image">
+            <img class="hero__image hero__image_left" src="/img/hero-left.jpg" alt="Букет цветов в банке. В букете ярко-орнажевые цветы. В букете ярко-ораньжевые розы, оранжевые тюльпаны и львиный зев">
+            
+            <svg class="hero__image hero__image_center" role="img" aria-label="<Букет цветов в вазе, включающий нежно-розовые розы, хризантемы и другие цветы пастельных цветов, размещенные в белой вазе в форме головы" width="680" height="588" viewBox="0 0 680 588" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <clippath id="hero">
+                <path
+                  d="M680 112.187C680 137.954 653.568 161.688 609.146 180.61C653.568 211.682 680 250.658 680 292.973C680 335.869 652.836 375.335 607.304 406.613C652.836 425.66 680 449.692 680 475.813C680 537.649 527.777 587.776 340 587.776C152.223 587.776 0 537.649 0 475.813C0 449.692 27.1636 425.66 72.6961 406.613C27.1636 375.335 0 335.869 0 292.973C0 250.658 26.4319 211.682 70.854 180.61C26.4319 161.688 0 137.954 0 112.187C0 50.3515 152.223 0.223633 340 0.223633C527.777 0.223633 680 50.3515 680 112.187Z"
+                  fill="#D9D9D9" />
+              </clippath>
+              <image xlink:href="/img/hero.jpg" width="100%" height="100%" clip-path="url(#hero)" />
+            </svg>
+
+            <img class="hero__image hero__image_right" src="/img/hero-right.jpg" alt="Композиция из цветов нежных тонов белого, розового и оранжевого цвета, размещеных в белой цилиндрической широкой вызе">
+          </figure>
+        </div>
+      </section>
+      
+      <section class="filter">
+        <div class="container">
+          <fieldset class="filter__group">
+            <input class="filter__radio" type="radio" name="filter" id="flowers" checked>
+            <label class="filter__label" for="flowers">
+              <div class="filter__label-container">
+                <img class="filter__img" src="img/flowers.png" alt="Значок букета цветов для выбора фильтра"/>
+                <span class="filter__text">Цветы</span>
+              </div>
+            </label>
+          
+            <input class="filter__radio" type="radio" name="filter" id="toys">
+            <label class="filter__label" for="toys" >
+              <div class="filter__label-container">
+                <img class="filter__img" src="img/toys.png" alt="Значок игрушки для выбора фильтра"/>
+                <span class="filter__text">Игрушки</span>
+              </div>
+            </label>
+          
+            <input class="filter__radio" type="radio" name="filter" id="postcards">
+            <label class="filter__label" for="postcards">
+              <div class="filter__label-container">
+                <img class="filter__img" src="img/postcards.png" alt="Значок открытки для выбора фильтра"/>
+                <span class="filter__text">Открытки</span>
+              </div>
+            </label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="subscribe">
+        <div class="container">
+          <h2 class="subscribe__title">Подпишись на рассылку</h2>
+          <form class="subscribe__form" action="#">
+            <input class="subscribe__input" type="search" name="search" placeholder="E-mail">
+  
+            <button class="subscribe__btn">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="20" fill="#F0A35B"/>
+                <path d="M14.1667 16.6667C14.785 16.6667 15.7084 16.0558 16.4834 15.4375C17.4834 14.6425 18.3559 13.6925 19.0217 12.6033C19.5209 11.7867 20 10.7967 20 10M20 10C20 10.7967 20.4792 11.7875 20.9784 12.6033C21.645 13.6925 22.5175 14.6425 23.5159 15.4375C24.2917 16.0558 25.2167 16.6667 25.8334 16.6667M20 10V30" stroke="white"/>
+                </svg>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

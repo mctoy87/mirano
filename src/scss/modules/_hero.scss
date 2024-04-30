@@ -1,0 +1,63 @@
+@use '../variables' as *;
+
+.hero {
+  padding: 60px 0;
+
+  &__head-group {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: $second-family;
+    font-weight: 400;
+    font-size: clamp(
+      80px, //min font size/ See figma 1024px
+      calc(80px + (40 * (100vw - 1024px) / (1440 - 1024))), //calculate font size between 1440 and 1024
+      120px, //max font size. See figma 1440px
+    );
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    color: $green;
+  }
+
+  &__subtitle {
+    font-family: $second-family;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(
+      32px, //min font size/ See figma 1024px
+      calc(32px + (8 * (100vw - 1024px) / (1440 - 1024))), //calculate font size between 1440 and 1024
+      40px, //max font size. See figma 1440px
+    );
+    line-height: 1.3;
+    text-align: right;
+    color: $dark;
+  }
+
+  &__group-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 26px; 
+  }
+
+  &__image {
+    object-fit: contain;
+    width: calc(284 / 1300 * 100%); //calc explane: img width / container width * 100 %
+
+    &_left {
+      border-radius: 400px 400px 400px 0; 
+    }
+
+    &_center {
+      width: calc(680 / 1300 * 100%); //calc explane: img width / container width * 100 %
+    }
+
+    &_right {
+      border-radius: 400px 0 400px 400px;
+    }
+  }
+}
+.container {
+}

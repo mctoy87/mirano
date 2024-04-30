@@ -1,6 +1,9 @@
-@use './variables' as *;
+@use 'fonts'; //connect fonts
+@use 'base'; //connect base styles
+@use './modules/_header'; //connect header styles
+@use './modules/_hero'; //connect hero styles
+@use './modules/filter'; //connect filter styles
+@use './modules/subscribe'; //connect subscribe styles
 
-body {
-  background-color: $color-test;
-}
+@import 'normalize.css'; //connect normilize
 

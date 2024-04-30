@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+.filter {
+
+  &__group {
+    border: none;
+    padding: 0;
+  }
+
+  &__radio {
+    appearance: none;
+    
+    &:focus + .filter__label {
+      background-color: $orange;
+    }
+
+    &:checked + .filter__label {
+      background-color:  $light-orange;
+    }
+
+    &:checked + .filter__label span{
+      color: $white;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 300px;
+
+    &:hover {
+      background-color: pink;
+    }
+  }
+
+  &__label-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  &__text {
+    font-family: $font-family;
+    font-weight: 400;
+    color: $dark;
+  }
+}
+.container {
+}
