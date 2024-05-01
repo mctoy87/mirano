@@ -4,6 +4,11 @@
 @use './modules/_hero'; //connect hero styles
 @use './modules/filter'; //connect filter styles
 @use './modules/subscribe'; //connect subscribe styles
+@use './modules/choices'; //connect choices styles
+@use './modules/goods';
+@use './modules/card';
+@use './modules/footer';
+
 
 @import 'normalize.css'; //connect normilize
 

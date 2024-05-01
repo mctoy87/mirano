@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+.card {
+  background-color: $white;
+  border-radius: 32px;
+  overflow: hidden;
+  min-height: 531px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 359px;
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding: 32px 16px;
+
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    grid-template-columns: max-content 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 18px;
+    align-self: start;
+    grid-column: 1 / -1;
+  }
+
+  &__date-delivery {
+    padding-left: 20px;
+    background-image: url('/img/delivery.svg');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    font-size: 14px;
+  }
+
+  &__btn {
+    border-radius: 32px;
+    padding: 8px 16px;
+    min-width: 120px;
+    background: $light-orange;
+    color: $white;
+  }
+
+  &__btn-text {
+    display: none;
+  }
+}
