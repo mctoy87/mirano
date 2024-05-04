@@ -9,3 +9,14 @@ $pattern: #f4f8eb;
 // fonts
 $font-family: "Inter", sans-serif;
 $second-family: "Playfair Display", sans-serif;
+
+@mixin responsive-font-size($min-size, $max-size, $min-screen, $max-screen) {
+  font-size: clamp(
+    #{$min-size}px, //min font size/ See figma 1024px
+    calc(
+      #{$min-size}px + (#{$max-size - $min-size} * (100vw - #{$min-screen}px) / ($max-screen - $min-screen))
+    ), //calculate font size between 1440 and 1024
+    #{$max-size}px //max font size. See figma 1440px
+  );
+}
+
