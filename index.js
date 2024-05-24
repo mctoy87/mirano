@@ -55,6 +55,13 @@ choices.forEach((choice) => {
   btn.addEventListener('click', () => {
     box.classList.toggle('choices__box_open');
 
+    choices.forEach(otherChoice => {
+      if (otherChoice !== choice) {
+        otherChoice.querySelector('.choices__box')
+        .classList.remove('choices__box_open')
+      }
+    });
+
     adjustElementPosition(box);
   })
 
@@ -63,5 +70,15 @@ choices.forEach((choice) => {
   });
 });
 
-// choices__btn
-// choices__box
+
+const headerCartButton = document.querySelector('.header__cart-button');
+const cartClose = document.querySelector('.cart__close');
+const cart = document.querySelector('.cart');
+
+headerCartButton.addEventListener('click', () => {
+  cart.classList.toggle('cart_open');
+});
+
+cartClose.addEventListener('click', () => {
+  cart.classList.remove('cart_open');
+})
