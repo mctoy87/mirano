@@ -1,15 +1,34 @@
+import { store } from "./store";
 export const API_URL = 'http://localhost:3000';
+/**
+ *  /api/products?type=bouquets
+    /api/products?type=toys
+    /api/products?type=postcards
+*/
 
-export const fetchProducts = async () => {
+const formatQueryString = params => { // создаем query на основе переданных параметров
+  if (Object.entries(params).length === 0) { //проверяем отсутствие ключей
+    return '';
+  }
+  
+  const searchParams = new URLSearchParams(); //создаем объект на основе search параметров
+  Object.entries(params).forEach(([key, value]) => { // перебираем все параметры 'Array[]'
+    searchParams.append(key, value);
+  });
+
+  return `?${searchParams.toString()}`; // преобразует объект в строку. Для searchParams преобразует в удобную строку key=value
+};
+
+export const fetchProducts = async (params = {}) => {
   try {
-    const response = await fetch(`${API_URL}/api/products`);
+    const response = await fetch(`${API_URL}/api/products${formatQueryString(params)}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const products = response.json();
+    const products = await response.json();
     
-    return products;
+    store.setProducts(products); // внесем товары в стор
   } catch (error) {
     console.log(`Ошибка при получении данных: ${error}`);
     return [];

@@ -3,13 +3,18 @@ import { initHeaderFixer } from '@/scripts/headerFixer';
 import { initChoices } from './scripts/choices';
 import { initCart } from './scripts/cart';
 import { renderProducts } from './scripts/renderProducts';
+import { initChoicesType } from './scripts/chocesType';
+import { filterProducts } from './scripts/filterProducts';
 
 
 const init = () => {
   initHeaderFixer();
   initChoices();
+  initChoicesType();
   initCart();
+
   renderProducts();
+  filterProducts();
 };
 
-document.addEventListener('DOMContentLoaded', init)
+document.addEventListener('DOMContentLoaded', init);
