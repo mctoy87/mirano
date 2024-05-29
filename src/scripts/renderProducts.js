@@ -8,10 +8,18 @@ export const renderProducts = async () => {
     const products = store.getProducts(); // получим продукты через store
     goodsList.innerHTML = '';
 
-    products.forEach((product) => {
-      const productCard = ProductCard(product);
-      goodsList.append(productCard);
-    });
+    if (products.length === 0) {
+      const messageItem = document.createElement('li');
+      messageItem.textContent = 'Товары не найдены';
+      messageItem.classList.add('goods__no-product');
+      goodsList.append(messageItem);
+    } else {
+      products.forEach((product) => {
+        const productCard = ProductCard(product);
+        goodsList.append(productCard);
+      });
+    }
+
   };
 
   store.subscribe(updateList); // подписываемся на стор (т.е. создаем наблюдателя updateList)

@@ -1,7 +1,7 @@
 @use 'fonts'; //connect fonts
 @use 'base'; //connect base styles
-@use './modules/_header'; //connect header styles
-@use './modules/_hero'; //connect hero styles
+@use './modules/header'; //connect header styles
+@use './modules/hero'; //connect hero styles
 @use './modules/filter'; //connect filter styles
 @use './modules/subscribe'; //connect subscribe styles
 @use './modules/choices'; //connect choices styles
@@ -9,6 +9,7 @@
 @use './modules/card';
 @use './modules/footer';
 @use './modules/cart';
+@use './modules/preload';
 
 
 @import 'normalize.css'; //connect normilize

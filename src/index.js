@@ -5,6 +5,7 @@ import { initCart } from './scripts/cart';
 import { renderProducts } from './scripts/renderProducts';
 import { initChoicesType } from './scripts/chocesType';
 import { filterProducts } from './scripts/filterProducts';
+import { initSearchProducts } from './scripts/search{roducts';
 
 
 const init = () => {
@@ -12,6 +13,7 @@ const init = () => {
   initChoices();
   initChoicesType();
   initCart();
+  initSearchProducts();
 
   renderProducts();
   filterProducts();
