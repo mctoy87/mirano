@@ -1,11 +1,11 @@
 import { ProductCard } from "./ProductCard";
-import { store } from "./store";
+import { productStore } from "./store";
 
 export const renderProducts = async () => {
   const goodsList = document.querySelector('.goods__list');
 
   const updateList = () => {
-    const products = store.getProducts(); // получим продукты через store
+    const products = productStore.getProducts(); // получим продукты через store
     goodsList.innerHTML = '';
 
     if (products.length === 0) {
@@ -22,7 +22,7 @@ export const renderProducts = async () => {
 
   };
 
-  store.subscribe(updateList); // подписываемся на стор (т.е. создаем наблюдателя updateList)
+  productStore.subscribe(updateList); // подписываемся на стор (т.е. создаем наблюдателя updateList)
   updateList();
 
 };

@@ -1,10 +1,5 @@
-import { store } from "./store";
+import { productStore } from "./store";
 export const API_URL = 'http://localhost:3000';
-/**
- *  /api/products?type=bouquets
-    /api/products?type=toys
-    /api/products?type=postcards
-*/
 
 const formatQueryString = params => { // создаем query на основе переданных параметров
   if (Object.entries(params).length === 0) { //проверяем отсутствие ключей
@@ -28,7 +23,7 @@ export const fetchProducts = async (params = {}) => {
     }
     const products = await response.json();
     
-    store.setProducts(products); // внесем товары в стор
+    productStore.setProducts(products); // внесем товары в стор
   } catch (error) {
     console.log(`Ошибка при получении данных: ${error}`);
     return [];

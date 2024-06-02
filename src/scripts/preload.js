@@ -8,7 +8,6 @@ export const callbackWithPreload =  async (elem, cb, ...params) => {
 
   try {
     const result =  await cb(...params);
-    console.log('result: ', result);
     return result;
   } finally {
     preload.style.display = 'none';
