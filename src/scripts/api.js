@@ -1,5 +1,5 @@
 import { productStore } from "./store";
-export const API_URL = 'http://localhost:3000';
+export const API_URL = 'https://southern-interesting-moonflower.glitch.me';
 
 const formatQueryString = params => { // создаем query на основе переданных параметров
   if (Object.entries(params).length === 0) { //проверяем отсутствие ключей
