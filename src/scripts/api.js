@@ -1,5 +1,5 @@
 import { productStore } from "./store";
-export const API_URL = 'https://southern-interesting-moonflower.glitch.me';
+export const API_URL = 'https://mirano-api-cpq5.onrender.com';
 
 const formatQueryString = params => { // создаем query на основе переданных параметров
   if (Object.entries(params).length === 0) { //проверяем отсутствие ключей
