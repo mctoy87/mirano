@@ -155,6 +155,19 @@
 .cart__order-btn {
   border-radius: 32px;
   padding: 9px 16px 8px 16px;
-  background: $light-orange;
+  background-color: $light-orange;
   color: $white;
+
+  &:hover {
+    background-color: $orange;
+  }
+
+  &:focus-visible {
+    outline: 1px solid $light-orange;
+    background-color: $orange;
+  }
+
+  &:disabled {
+    background-color: rgba($light-orange, 0.4);
+  }
 }

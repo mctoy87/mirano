@@ -1,64 +1,90 @@
-export const Order = () => (
-  <div class="order">
-    <div class="order__wrapper">
-      <h2 class="order__title">Оформить заказ</h2>
+const openSelect = () => {
+  const selectWrapper = document.querySelector('.order__select-wrapper');
+  selectWrapper.classList.add('order__select-wrapper_active'); // помогает стилизовать стрелочку в селекте
+};
 
-      <form class="order__form" id="order">
-        <fieldset class="order__fieldset">
-          <legend class="order__legend">Данные заказчика</legend>
+const closeSelect = () => {
+  const selectWrapper = document.querySelector('.order__select-wrapper');
+  selectWrapper.classList.remove('order__select-wrapper_active'); // помогает стилизовать стрелочку в селекте
+};
 
-          <div class="order__input-group">
-            <input class="order__input" type="text" name="name-buyer" placeholder="Имя"/>
-            <input class="order__input" type="text" name="phone-buyer" placeholder="Телефон"/>
-          </div>
-        </fieldset>
+export const Order = (totalPriceValue) => {
+  const date = new Date(); // таймстэмп
+  date.setDate(date.getDate() + 1); // т.к. доставка +1 день, то меняем дату от текущей
 
-        <fieldset class="order__fieldset">
-          <legend class="order__legend">Данные получателя</legend>
-          <div class="order__input-group">
-            <input class="order__input" type="text" name="name-recipient" placeholder="Имя"/>
-            <input class="order__input" type="text" name="phone-recipient" placeholder="Телефон"/>
-          </div>
-        </fieldset>
+  const day = date.getDay() < 10 ? `0${date.getDay()}`: date.getDay(); // устанавливает день месяца указанной даты
+  const mounth = (date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1); //  возвращает месяц указанной даты (метод возвр месяц начиная с 0), плюс добавит 0 в числа до 10
 
-        <fieldset class="order__fieldset">
-          <legend class="order__legend">Адрес</legend>
-          <div class="order__input-group">
-            <input class="order__input" type="text" name="street" placeholder="Улица"/>
-            <input class="order__input order__input_min" type="text" name="house" placeholder="Дом"/>
-            <input class="order__input order__input_min" type="text" name="apartment" placeholder="Квартира"/>
-          </div>
-        </fieldset>
+  const deliveryDate = `${day}.${mounth}`; // возвр дату доставки в удобном формате
 
-        <fieldset class="order__fieldset">
-          <div class="order__payment">
-            <label class="order__label-radio">
-              <input class="order__radio" type="radio" name="payment-online" checked />
-              Оплата онлайн
-            </label>
-          </div>
+  return (
+    <div class="order">
+      <div class="order__wrapper">
+        <h2 class="order__title">Оформить заказ</h2>
 
-          <div class="order__delivery">
-            <label for="delivery">Доставка 10.05</label>
-            <input type="hidden" name="delivery-date" value="10.05"/>
+        <form class="order__form" id="order">
+          <fieldset class="order__fieldset">
+            <legend class="order__legend">Данные заказчика</legend>
 
-            <div class="order__select-wrapper">
-              <select class="order__select" name="delivery-time" id="delivery">
-                <option value="9-12">с 9:00 до 12:00</option>
-                <option value="12-15">с 12:00 до 15:00</option>
-                <option value="15-18">с 15:00 до 18:00</option>
-                <option value="18-21">с 18:00 до 21:00</option>
-              </select>
+            <div class="order__input-group">
+              <input class="order__input" type="text" name="name-buyer" placeholder="Имя"/>
+              <input class="order__input" type="text" name="phone-buyer" placeholder="Телефон"/>
             </div>
-          </div>
-        </fieldset>
-      </form>
+          </fieldset>
 
-      <div class="order__footer">
-        <p class="order__total">9000&nbsp;₽</p>
-        <button class="order__button" type="submit" form="order">Заказать</button>
+          <fieldset class="order__fieldset">
+            <legend class="order__legend">Данные получателя</legend>
+            <div class="order__input-group">
+              <input class="order__input" type="text" name="name-recipient" placeholder="Имя"/>
+              <input class="order__input" type="text" name="phone-recipient" placeholder="Телефон"/>
+            </div>
+          </fieldset>
+
+          <fieldset class="order__fieldset">
+            <legend class="order__legend">Адрес</legend>
+            <div class="order__input-group">
+              <input class="order__input" type="text" name="street" placeholder="Улица"/>
+              <input class="order__input order__input_min" type="text" name="house" placeholder="Дом"/>
+              <input class="order__input order__input_min" type="text" name="apartment" placeholder="Квартира"/>
+            </div>
+          </fieldset>
+
+          <fieldset class="order__fieldset">
+            <div class="order__payment">
+              <label class="order__label-radio">
+                <input class="order__radio" type="radio" name="payment-online" checked value='true'/>
+                Оплата онлайн
+              </label>
+            </div>
+
+            <div class="order__delivery">
+              <label for="delivery">Доставка {deliveryDate}</label>
+              <input type="hidden" name="delivery-date" value={deliveryDate}/>
+
+              <div class="order__select-wrapper">
+                <select 
+                  class="order__select"
+                  name="delivery-time"
+                  id="delivery"
+                  onFocus={openSelect}
+                  onBlur={closeSelect}
+                >
+                  <option value="9-12">с 9:00 до 12:00</option>
+                  <option value="12-15">с 12:00 до 15:00</option>
+                  <option value="15-18">с 15:00 до 18:00</option>
+                  <option value="18-21">с 18:00 до 21:00</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="order__footer">
+          <p class="order__total">{totalPriceValue}&nbsp;₽</p>
+          <button class="order__button" type="submit" form="order">Заказать</button>
+        </div>
       </div>
+      <button class="order__close" type="button">&times;</button>
     </div>
-    <button class="order__close" type="button">&times;</button>
-  </div>
-);
+  );
+};

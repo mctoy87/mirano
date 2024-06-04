@@ -29,3 +29,24 @@ export const fetchProducts = async (params = {}) => {
     return [];
   }
 };
+
+export const sendOrder = async (orderData) => { // отправляет данные заказа на сервер
+  try {
+    const response = await fetch(`${API_URL}/api/orders`, {
+      method: 'POST', 
+      credentials: 'include', // позволить передавать куки серверу
+      headers: {
+        "Content-Type": 'application/json', //отправляем на сервер json 
+      },
+      body: JSON.stringify(orderData), //сами данные привденные к строке json
+    });
+
+      if (!response.ok) {
+        throw new Error(`Ошибка при заказе, попробуйте позже!  :: ${response.status}`)
+      }
+
+      return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};

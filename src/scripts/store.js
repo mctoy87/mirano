@@ -80,8 +80,6 @@ class CartStore extends Store { //новый store с корзиной
     return this.cart;
   }
 
-
-
   async addProductCart(id) { // добавить товар в корзину
     await this.postCart({id, quantity: 1});
   }
@@ -126,6 +124,11 @@ class CartStore extends Store { //новый store с корзиной
     } catch (error) { // поймам вообще ошибки
       console.log(error);
     }
+  }
+
+  clearCart() { // очищает корзину
+    this.cart = [];
+    this.notifyObservers();
   }
 }
 

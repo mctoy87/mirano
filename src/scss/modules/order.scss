@@ -15,9 +15,11 @@
     margin: auto;
     padding: 60px 32px;
     background-color: $white;
+    border-radius: 32px;
 
     @include mobile {
       padding: 32px 16px;
+      border-radius: 20px;
     }
   }
 
@@ -175,8 +177,8 @@
       transition: transform 0.3s ease-in-out; // разворот стрелки при клике
     }
 
-    &_active:after { // можно 'open' вместо 'active'
-      transform: translateY(-50%) roatate(180deg); //дублирование из after, т.к. свойство будет скинуто + rotate после (не до!)
+    &_active::after { // допкласс для открытия/закрытия selecta 'active'
+      transform: translateY(-50%) rotate(180deg); //дублирование из after, т.к. свойство будет скинуто + rotate после (не до!)
     }
   }
 
