@@ -1,4 +1,4 @@
-export const callbackWithPreload =  async (elem, cb, ...params) => {
+export const callbackWithPreload =  async function (elem, cb, ...params) {
   const preload = document.createElement('div');
   preload.classList.add('preload');
 

@@ -1,4 +1,4 @@
-import {API_URL} from './api';
+import {API_URL, fetchProducts} from './api';
 
 class Store {
   constructor() {
@@ -19,7 +19,29 @@ class ProductStore extends Store { // новый store с товарами от�
     super(); // подтягиваем конструктор Store
     this.products = [];
     this.categories = new Set();
+    this.error = null;
+    this.loading = false;
   }
+
+  fetchProducts() {
+    const _self = this;
+    return async (params) => {
+      try {
+        _self.error = null;
+        _self.loading = true;
+        _self.products = await fetchProducts(params);
+        _self.loading = false;
+        _self.notifyObservers(); // уведомить наблюдателей об изменениях
+      } catch (error) {
+        console.log('error: ', error);
+        _self.error = error;
+        _self.products = [];
+        _self.loading = false;
+        _self.notifyObservers(); // уведомить наблюдателей об изменениях
+      }
+    }
+  };
+
 
   getProducts() {
     return this.products;
@@ -46,7 +68,7 @@ class ProductStore extends Store { // новый store с товарами от�
       }
     });
     this.notifyObservers(); // уведомить наблюдателей об изменениях
-  }
+  };
 };
 
 class CartStore extends Store { //новый store с корзиной

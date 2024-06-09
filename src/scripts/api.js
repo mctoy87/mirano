@@ -23,7 +23,7 @@ export const fetchProducts = async (params = {}) => {
     }
     const products = await response.json();
     
-    productStore.setProducts(products); // внесем товары в стор
+    return products; // внесем товары в стор
   } catch (error) {
     console.log(`Ошибка при получении данных: ${error}`);
     return [];
