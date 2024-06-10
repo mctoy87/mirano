@@ -1,4 +1,5 @@
 import { API_URL } from "./api";
+import { debounce } from "./debounce";
 import { cartStore } from "./store";
 
 export const CartElem = (product) => (
@@ -16,7 +17,22 @@ export const CartElem = (product) => (
       }}>
       -
     </button>
-    <input class="cart__counter-input" type="number" max="99" min="0" value={product.quantity}/>
+    <input 
+      class="cart__counter-input" 
+      type="number" 
+      max="99" 
+      min="0" 
+      value={product.quantity}
+      onInput={debounce(({target}) => {
+        cartStore.postCart({
+          id: product.id,
+          quantity: !isNaN(parseInt(target.value))
+            ? parseInt(target.value)
+            : product.quantity,
+        });
+        // target.value = isNaN(parseInt(target.value)) || product.quantity,
+      }, 500)}
+    />
     <button class="cart__counter-btn" 
     onClick={() => {
         cartStore.postCart({

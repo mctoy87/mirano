@@ -20,7 +20,7 @@ class ProductStore extends Store { // новый store с товарами от�
     this.products = [];
     this.categories = new Set();
     this.error = null;
-    this.loading = false;
+    this._loading = false;
   }
 
   fetchProducts() {
@@ -29,22 +29,30 @@ class ProductStore extends Store { // новый store с товарами от�
       try {
         _self.error = null;
         _self.loading = true;
-        _self.products = await fetchProducts(params);
+        _self.setProducts(await fetchProducts(params));
         _self.loading = false;
         _self.notifyObservers(); // уведомить наблюдателей об изменениях
       } catch (error) {
         console.log('error: ', error);
         _self.error = error;
-        _self.products = [];
+        _self.setProducts([]);
         _self.loading = false;
         _self.notifyObservers(); // уведомить наблюдателей об изменениях
       }
     }
   };
 
-
   getProducts() {
     return this.products;
+  }
+
+  get loading() {
+    return this._loading;
+  }
+
+  set loading(bool) {
+    this._loading = bool;
+    this.notifyObservers(); // уведомить наблюдателей об изменениях
   }
 
   setProducts(newProducts) { // обновить список продуктов

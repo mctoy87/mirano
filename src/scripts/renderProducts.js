@@ -8,7 +8,7 @@ export const renderProducts = async () => {
     const products = productStore.getProducts(); // получим продукты через store
     goodsList.innerHTML = '';
 
-    if (products.length === 0) {
+    if (products.length === 0 && !productStore.loading) {
       const messageItem = document.createElement('li');
       messageItem.textContent = 'Товары не найдены';
       messageItem.classList.add('goods__no-product');
