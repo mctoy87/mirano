@@ -24,13 +24,14 @@ export const CartElem = (product) => (
       min="0" 
       value={product.quantity}
       onInput={debounce(({target}) => {
+        const quantity = !isNaN(parseInt(target.value))
+          ? parseInt(target.value)
+          : product.quantity;
         cartStore.postCart({
           id: product.id,
-          quantity: !isNaN(parseInt(target.value))
-            ? parseInt(target.value)
-            : product.quantity,
+          quantity,
         });
-        // target.value = isNaN(parseInt(target.value)) || product.quantity,
+        target.value = quantity;
       }, 500)}
     />
     <button class="cart__counter-btn" 
